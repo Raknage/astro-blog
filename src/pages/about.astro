@@ -14,26 +14,13 @@ const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
 const happy = true;
 const finished = false;
 const goal = 3;
-
-const skillColor = "crimson";
 ---
 
-<style define:vars={{ skillColor }}>
-  h1 {
-    color: coral;
-    font-size: 4rem;
-  }
-  .skill {
-    color: var(--skillColor);
-    font-weight: bold;
-  }
-</style>
-
 <Layout title={pageTitle}>
-  <h1>{pageTitle}</h1>
+  <h1 class="text-6xl py-4 text-orange-400">{pageTitle}</h1>
 
-  <p>Here are a few facts about me:</p>
-  <ul>
+  <h2 class="py-2 text-2xl">Here are a few facts about me:</h2>
+  <ul class="py-1">
     <li>My name is {identity.firstName}.</li>
     <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
     {
@@ -44,9 +31,9 @@ const skillColor = "crimson";
       )
     }
   </ul>
-  <p>My skills are:</p>
-  <ul>
-    {skills.map((skill) => <li class="skill">{skill}</li>)}
+  <h2 class="pt-2 text-2xl">My skills are:</h2>
+  <ul class="py-2">
+    {skills.map((skill) => <li class="text-red-600 font-bold">{skill}</li>)}
   </ul>
 
   {happy && <p>I am happy to be learning Astro!</p>}

@@ -5,7 +5,7 @@ import Nav from "../components/Nav.astro";
 const { title } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="bg-slate-900 text-orange-200 font-sans">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -14,7 +14,7 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="flex flex-col items-center w-full h-full px-4">
     <Nav />
     <slot />
   </body>
