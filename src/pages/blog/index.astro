@@ -7,7 +7,7 @@ const posts = (await getCollection("blog")).sort((a, b) => a.data.pubDate.valueO
 ---
 
 <Layout title={pageTitle}>
-  <h1>{pageTitle}</h1>
+  <h1 class="page-title">{pageTitle}</h1>
 
   <ul>
     {

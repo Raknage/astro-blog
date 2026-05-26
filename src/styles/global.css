@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+@layer components {
+  .page-title {
+    @apply text-6xl py-4 text-orange-400;
+  }
+}
