@@ -17,26 +17,26 @@ const goal = 3;
 ---
 
 <Layout title={pageTitle}>
-  <h1 class="text-6xl py-4 text-orange-400">{pageTitle}</h1>
-
-  <h2 class="py-2 text-2xl">Here are a few facts about me:</h2>
-  <ul class="py-1">
-    <li>My name is {identity.firstName}.</li>
-    <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
-    {
-      identity.hobbies.length >= 2 && (
-        <li>
-          Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}
-        </li>
-      )
-    }
-  </ul>
-  <h2 class="pt-2 text-2xl">My skills are:</h2>
-  <ul class="py-2">
-    {skills.map((skill) => <li class="text-red-600 font-bold">{skill}</li>)}
-  </ul>
-
-  {happy && <p>I am happy to be learning Astro!</p>}
-  {finished && <p>I finished this tutorial!</p>}
-  {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+  <main class="grow">
+    <h1 class="text-6xl py-4 text-orange-400">{pageTitle}</h1>
+    <h2 class="p-2 text-2xl">Here are a few facts about me:</h2>
+    <ul class="py-1">
+      <li>My name is {identity.firstName}.</li>
+      <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
+      {
+        identity.hobbies.length >= 2 && (
+          <li>
+            Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}
+          </li>
+        )
+      }
+    </ul>
+    <h2 class="pt-2 text-2xl">My skills are:</h2>
+    <ul class="py-2">
+      {skills.map((skill) => <li class="text-red-600 font-bold">{skill}</li>)}
+    </ul>
+    {happy && <p>I am happy to be learning Astro!</p>}
+    {finished && <p>I finished this tutorial!</p>}
+    {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+  </main>
 </Layout>
