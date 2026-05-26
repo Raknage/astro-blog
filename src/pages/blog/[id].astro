@@ -1,5 +1,5 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import MDLayout from "../../layouts/MDLayout.astro";
 import { getCollection, render } from "astro:content";
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -12,12 +12,6 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<Layout title={post.data.title}>
-  <h1>{post.data.title}</h1>
+<MDLayout post={post}>
   <Content />
-
-  <h2>Tags</h2>
-  <ul>
-    {post.data.tags.map((tag) => <li>{tag}</li>)}
-  </ul>
-</Layout>
+</MDLayout>
