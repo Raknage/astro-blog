@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/52277d75-afa7-4e91-a0e8-cbee023f09a3/deploy-status)](https://app.netlify.com/projects/dynamic-alfajores-a67778/deploys)
+
 # Astro Starter Kit: Minimal
 
 ```sh
