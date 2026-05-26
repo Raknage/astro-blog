@@ -1,7 +1,12 @@
 ---
+import Menu from "./Menu.astro";
 import TopNav from "./TopNav.astro";
 ---
 
-<header>
+<header class="flex flex-col items-end gap-2 w-full py-2 sm:items-center fixed sm:sticky top-0 right-5">
+  <Menu />
   <TopNav />
+  <script>
+    import "../scripts/menu";
+  </script>
 </header>
