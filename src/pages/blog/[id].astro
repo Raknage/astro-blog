@@ -1,6 +1,7 @@
 ---
 import MDLayout from "../../layouts/MDLayout.astro";
 import { getCollection, render } from "astro:content";
+
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts.map((post) => ({
