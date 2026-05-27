@@ -20,11 +20,15 @@ const { post } = Astro.props;
   <h1 class="page-title">{post.data.title}</h1>
   <p>Written by {post.data.author}</p>
   <p>Published: {post.data.pubDate.toLocaleDateString("fi-FI")}</p>
-  <ul class="flex justify-center items-center gap-5">
-      <li class="font-bold text-xl">
-          <h2>Tags:</h2>
-      </li>
-    {post.data.tags.map((tag) => <li class="rounded-full shadow-md border px-3 py-1 bg-slate-950/40">{tag}</li>)}
+  <ul class="flex flex-wrap items-center justify-center gap-5">
+    <li class="text-xl font-bold">
+      <h2>Tags:</h2>
+    </li>
+    {
+      post.data.tags.map((tag) => (
+        <li class="rounded-full border bg-slate-950/40 px-3 py-1 shadow-md">{tag}</li>
+      ))
+    }
   </ul>
 
   <slot />
