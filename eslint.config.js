@@ -22,9 +22,9 @@ export default defineConfig([
     extends: ["json/recommended"],
   },
   {
+    files: ["package-lock.json"],
     rules: {
-      // override/add rules settings here, such as:
-      // "astro/no-set-html-directive": "error"
+      "json/no-empty-keys": "off",
     },
   },
 ]);
