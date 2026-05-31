@@ -7,7 +7,7 @@
 
 @layer components {
   .page-title {
-    @apply py-4 text-6xl text-orange-400;
+    @apply py-4 text-[8vw] text-orange-400;
   }
 }
 

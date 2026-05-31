@@ -1,0 +1,20 @@
+---
+import TUOPostLayout from "@/layouts/TUOPostLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("TUOPosts");
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}
+const { post } = Astro.props;
+---
+
+<TUOPostLayout post={post} />
+<style>
+  p {
+    margin-bottom: 16px;
+  }
+</style>

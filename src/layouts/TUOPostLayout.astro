@@ -1,0 +1,23 @@
+---
+import type { InferLoaderSchema, RenderedContent } from "astro:content";
+import Layout from "./Layout.astro";
+
+interface Props {
+  post: {
+    id: string;
+    body?: string;
+    collection: string;
+    data: InferLoaderSchema<"TUOPosts">;
+    rendered?: RenderedContent;
+    filePath?: string;
+  };
+}
+
+const { post } = Astro.props;
+---
+
+<Layout title={post.data.title.rendered}>
+  <h1 class="page-title">{post.data.title.rendered}</h1>
+  <p class="py-4 text-gray-400">Published: {post.data.date.toLocaleDateString("fi-FI")}</p>
+  <article class="flex flex-col gap-4" set:html={post.data.content.rendered} />
+</Layout>
