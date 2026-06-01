@@ -1,6 +1,7 @@
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
+import { WPLoader } from "./lib/opiskelijakunta";
 
 const blog = defineCollection({
   loader: glob({ base: "./src/content/posts", pattern: "**/*.md" }),
@@ -17,4 +18,8 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const TUOPosts = defineCollection({
+  loader: WPLoader({ url: "https://opiskelijakunta.net/wp-json/wp/v2/posts" }),
+});
+
+export const collections = { blog, TUOPosts };

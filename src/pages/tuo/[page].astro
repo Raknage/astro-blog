@@ -1,0 +1,21 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import type { GetStaticPaths } from "astro";
+import type { Pages } from "@/lib/WPTypes";
+
+export const getStaticPaths = (async () => {
+  const res = await fetch("https://opiskelijakunta.net/wp-json/wp/v2/pages?per_page=15");
+  const pages: Pages = await res.json();
+
+  return pages.map((page) => ({
+    params: { page: page.slug },
+    props: { page: page },
+  }));
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<Layout title={page.title.rendered}>
+  <Fragment set:html={page.content.rendered} />
+</Layout>
