@@ -25,7 +25,7 @@ export function WPLoader(options: { url: string }) {
       modified: z.coerce.date(),
       modified_gmt: z.coerce.date(),
       slug: z.string(),
-      status: z.string(),
+      status: z.enum(["publish", "future", "draft", "pending", "private"]),
       type: z.string(),
       link: z.url(),
       title: z.object({ rendered: z.string() }),
@@ -40,6 +40,9 @@ export function WPLoader(options: { url: string }) {
       author: z.number(),
       featured_media: z.number(),
       sticky: z.boolean(),
+      _links: z.object({
+        "wp:featuredmedia": z.array(z.object({ embeddable: z.boolean(), href: z.string() })),
+      }),
     }),
     load: async ({ store, parseData }) => {
       const posts = await fetchWPPosts(feedUrl);

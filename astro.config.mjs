@@ -13,7 +13,7 @@ export default defineConfig({
   },
 
   image: {
-    domains: ["astro.build"],
+    domains: ["opiskelijakunta.net", "astro.build"],
   },
 
   integrations: [react()],

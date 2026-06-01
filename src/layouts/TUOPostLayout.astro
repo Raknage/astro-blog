@@ -1,6 +1,8 @@
 ---
 import type { InferLoaderSchema, RenderedContent } from "astro:content";
 import Layout from "./Layout.astro";
+import type { FeaturedMedia } from "@/lib/WPTypes";
+import { Image, Picture } from "astro:assets";
 
 interface Props {
   post: {
@@ -14,10 +16,30 @@ interface Props {
 }
 
 const { post } = Astro.props;
+
+const res = await fetch(post.data._links["wp:featuredmedia"][0].href);
+const media: FeaturedMedia = await res.json();
+const fullImage = media.media_details.sizes.full;
 ---
 
 <Layout title={post.data.title.rendered}>
+  <Image
+    class="w-full"
+    src={fullImage.source_url}
+    alt=""
+    width={fullImage.width}
+    height={fullImage.height}
+  />
   <h1 class="page-title">{post.data.title.rendered}</h1>
   <p class="py-4 text-gray-400">Published: {post.data.date.toLocaleDateString("fi-FI")}</p>
   <article class="flex flex-col gap-4" set:html={post.data.content.rendered} />
+  <Picture
+    class="w-full"
+    src={fullImage.source_url}
+    formats={["avif", "webp"]}
+    layout="constrained"
+    alt=""
+    width={fullImage.width}
+    height={fullImage.height}
+  />
 </Layout>
