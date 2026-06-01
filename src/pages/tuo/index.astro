@@ -4,7 +4,9 @@ import { getCollection } from "astro:content";
 import type { Pages } from "@/lib/WPTypes";
 
 const pageTitle = "TUO";
-const posts = await getCollection("TUOPosts");
+const posts = (await getCollection("TUOPosts")).sort(
+  (b, a) => a.data.date.valueOf() - b.data.date.valueOf(),
+);
 
 const res = await fetch(
   "https://opiskelijakunta.net/wp-json/wp/v2/pages?_fields=slug,title&per_page=15",

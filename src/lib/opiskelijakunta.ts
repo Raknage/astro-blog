@@ -44,11 +44,12 @@ export function WPLoader(options: { url: string }) {
         "wp:featuredmedia": z.array(z.object({ embeddable: z.boolean(), href: z.string() })),
       }),
     }),
-    load: async ({ store, parseData }) => {
+    load: async ({ store, parseData, logger, generateDigest }) => {
       const posts = await fetchWPPosts(feedUrl);
 
       if (import.meta.env.DEV) {
         store.clear();
+        logger.info("store cleared");
       }
 
       for (const post of posts) {
@@ -61,6 +62,7 @@ export function WPLoader(options: { url: string }) {
         store.set({
           id,
           data,
+          digest: generateDigest(post),
         });
       }
     },
