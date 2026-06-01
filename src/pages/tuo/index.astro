@@ -1,14 +1,31 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import type { Pages } from "@/lib/WPTypes";
 
 const pageTitle = "TUO";
 const posts = await getCollection("TUOPosts");
+
+const res = await fetch(
+  "https://opiskelijakunta.net/wp-json/wp/v2/pages?_fields=slug,title&per_page=15",
+);
+const pages: Pages = await res.json();
 ---
 
 <Layout title={pageTitle}>
   <h1 class="page-title">{pageTitle}</h1>
 
+  <ul>
+    {
+      pages.map((page) => (
+        <li>
+          <a href={`/tuo/${page.slug}`}>{page.title.rendered}</a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2 class="py-4 text-xl text-orange-400">Blogi</h2>
   <ul>
     {
       posts.map((post) => (
