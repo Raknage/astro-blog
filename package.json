@@ -1,29 +1,27 @@
 {
   "name": "astro-blog",
-  "type": "module",
   "version": "0.0.1",
-  "engines": {
-    "node": ">=22.12.0"
-  },
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier . --write",
-    "lint": "eslint",
-    "check": "astro check && eslint && prettier . --write"
+    "format": "vp fmt .",
+    "lint": "vp lint",
+    "check": "astro check && vp lint && vp fmt .",
+    "prepare": "vp config"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
-    "@astrojs/react": "^5.0.6",
+    "@astrojs/react": "^5.0.7",
     "@astrojs/rss": "^4.0.18",
     "@base-ui/react": "^1.5.0",
     "@fontsource-variable/inter": "^5.2.8",
     "@tailwindcss/vite": "^4.3.0",
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
-    "astro": "^6.3.7",
+    "astro": "^6.4.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.17.0",
@@ -36,18 +34,16 @@
     "typescript": "^6.0.3"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@eslint/json": "^1.2.0",
-    "@typescript-eslint/parser": "^8.60.0",
-    "eslint": "^10.4.0",
     "eslint-plugin-astro": "^1.7.0",
     "globals": "^17.6.0",
-    "prettier": "^3.8.3",
-    "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.8.0",
-    "typescript-eslint": "^8.60.0"
+    "vite-plus": "latest"
   },
-  "volta": {
-    "node": "24.16.0"
-  }
+  "overrides": {
+    "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+    "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "packageManager": "npm@11.16.0"
 }

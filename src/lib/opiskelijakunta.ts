@@ -1,6 +1,7 @@
-import type { Posts } from "./WPTypes";
 import type { Loader } from "astro/loaders";
 import { z } from "astro/zod";
+
+import type { Posts } from "./WPTypes";
 
 async function fetchWPPosts(url: URL, page = 1, per_page = 10): Promise<Posts> {
   const res = await fetch(`${url}?page=${page}&per_page=${per_page}`);
@@ -44,25 +45,25 @@ export function WPLoader(options: { url: string }) {
         "wp:featuredmedia": z.array(z.object({ embeddable: z.boolean(), href: z.string() })),
       }),
     }),
-    load: async ({ store, parseData, logger, generateDigest }) => {
+    load: async (ctx) => {
       const posts = await fetchWPPosts(feedUrl);
 
       if (import.meta.env.DEV) {
-        store.clear();
-        logger.info("store cleared");
+        ctx.store.clear();
+        ctx.logger.info("store cleared");
       }
 
       for (const post of posts) {
         const id = String(post.id);
-        const data = await parseData({
+        const data = await ctx.parseData({
           id,
           data: post,
         });
 
-        store.set({
+        ctx.store.set({
           id,
           data,
-          digest: generateDigest(post),
+          digest: ctx.generateDigest(post),
         });
       }
     },
