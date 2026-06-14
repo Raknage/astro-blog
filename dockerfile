@@ -12,7 +12,7 @@ FROM caddy:2-alpine AS runtime
 COPY --from=build /app/dist /srv
 
 COPY Caddyfile /etc/caddy/Caddyfile
-EXPOSE 80
+EXPOSE 3000
 
 # Local:
 # docker build -t tuo-concept .
