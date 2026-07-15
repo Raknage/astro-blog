@@ -8,6 +8,9 @@
     "source.fixAll.oxc": "explicit"
   },
   "files.eol": "\n",
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
 
   // oxc
   "oxc.enable": true,
